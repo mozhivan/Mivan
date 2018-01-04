@@ -7,9 +7,24 @@
 */
 package ru.job4j;
 
-public class Calculate
- {
-public static void main(String[] args)
-  { System.out.println ("Hello, world!");
+public class Calculate {
+	/**
+     * Main.
+     * @param args - args.
+     */
+public static void main(String[] args){ 
+/**
+     * Конструктор, вывод строки на консоль.
+     * @param args - args.
+     */
+	 System.out.println ("Hello, world!");
+  }
+   /**
+     * Method echo.
+     * @param name Ivan Mozheiko.
+     * @return Echo plus your name.
+     */
+  public String echo(String name){
+	  return "Echo, echo, echo : " + name;
   }
  }
