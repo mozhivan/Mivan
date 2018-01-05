@@ -12,19 +12,19 @@ public class Calculate {
      * Main.
      * @param args - args.
      */
-public static void main(String[] args){ 
+public static void main(String[] args) { 
 /**
      * Конструктор, вывод строки на консоль.
      * @param args - args.
      */
-	 System.out.println ("Hello, world!");
+	 System.out.println("Hello, world!");
   }
    /**
      * Method echo.
      * @param name Ivan Mozheiko.
      * @return Echo plus your name.
      */
-  public String echo(String name){
+  public String echo(String name) {
 	  return "Eсho, echo, echo : " + name;
   }
  }
