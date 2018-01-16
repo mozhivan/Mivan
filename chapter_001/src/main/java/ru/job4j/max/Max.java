@@ -9,5 +9,10 @@ public class Max {
         else
         return first;
     }
+    public int max(int first, int second, int third){
+        int m1 = Math.max(first, second);
+        int m2 = Math.max(m1, third);
+        return m2;
+    }
 
 }
