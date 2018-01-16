@@ -8,23 +8,24 @@ public class Point {
         this.x = x;
         this.y = y;
     }
+    /**
+     * @author Ivan Mozheiko (mozhivan@yandex.ru)
+     * Вычисляет расстояние от одной точки до другой.
+     *
+     * Point b в методе вообще не нужен.
+     * А переменные int x1,x2,y1,y2 можно можно задать сразу в формуле.
+     *
+     */
     public double distanceTo(Point that) {
         Point a = this;
-        Point b = that;
-        int x1 = a.x;
-        int y1 = a.y;
-        int x2 = b.x;
-        int y2 = b.y;
-
-        double result = Math.sqrt(
-                Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)
+        double result = Math.sqrt(Math.pow(that.x - a.x, 2) + Math.pow(that.y - a.y, 2)
         );
         return result;
     }
 
     public static void main(String[] args) {
-        Point a = new Point(0, 1);
-        Point b = new Point(2, 5);
+        Point a = new Point(16, 5);
+        Point b = new Point(67, 5);
         // сделаем вызов метода
         System.out.println("x1 = " + a.x);
         System.out.println("y1 = " + a.y);

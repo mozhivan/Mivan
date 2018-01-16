@@ -10,9 +10,8 @@ public class Max {
         return first;
     }
     public int max(int first, int second, int third){
-        int m1 = Math.max(first, second);
-        int m2 = Math.max(m1, third);
-        return m2;
+        int mx = Math.max(Math.max(first, second), third);
+        return mx;
     }
 
 }
