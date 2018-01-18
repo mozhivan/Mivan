@@ -16,8 +16,8 @@ public class MaxTest {
     @Test
     public void whenFirstAndThirdLessThenSecond() {
         Max max = new Max();
-        int result = max.max(5,125, 22);
-        assertThat(result, is(125));
+        int result = max.max(555,125, 22);
+        assertThat(result, is(555));
 
     }
 }
