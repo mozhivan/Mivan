@@ -1,9 +1,9 @@
 package ru.job4j.loop;
 
 public class Counter {
-    int rsl;
-    public int add(int start, int finish) {
 
+    public int add(int start, int finish) {
+        int rsl = 0;
         for(int i=start; i<= finish; i++){
             if (i % 2==0){
                 rsl += i;
