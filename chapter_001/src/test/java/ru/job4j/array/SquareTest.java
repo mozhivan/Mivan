@@ -22,4 +22,13 @@ public class SquareTest {
         int result = m[0] + m[9];
         assertThat(result, is(101));
     }
+
+
+    @Test
+    public void arrayTest() {
+        Square square = new Square();
+        int[] resultArray = square.calculate(4);
+        int [] expectArray = { 1, 4, 9, 16};
+        assertThat(resultArray, is( expectArray));
+    }
 }
