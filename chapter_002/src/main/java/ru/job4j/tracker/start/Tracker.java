@@ -63,7 +63,7 @@ public class Tracker {
         Item[] result = new Item[this.position];
         for (int i = 0; i != this.position; i++){
             result[i] = this.items[i];
-        }
+            }
         return result;
     }
     /**

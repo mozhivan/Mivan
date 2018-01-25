@@ -90,7 +90,7 @@ public class StartUI {
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите имя заявки :");
+        String desc = this.input.ask("Введите описание заявки :");
         Item item = new Item(name, desc);
         this.tracker.add(item);
         System.out.println("------------ Новая заявка успешно добавлена! Id заявки : " + item.getId() + "-----------");
@@ -126,7 +126,7 @@ public class StartUI {
         System.out.println("------------ Удаление заявки --------------");
         String id = this.input.ask("Введите id заявки :");
         this.tracker.delete(id);
-        System.out.println("------------ Новая заявка успешно удалена! -----------");
+        System.out.println("------------ Заявка успешно удалена! -----------");
     }
     /**
      * Метод реализует поиск заявки в хранилище по id.
