@@ -5,7 +5,7 @@ package ru.job4j.tracker;
  * @version 1
  * @since 0.1
  */
-public class Item extends Tracker{
+public class Item {
     private String id;
     private  String name;
     private  String desc;
@@ -16,23 +16,21 @@ public class Item extends Tracker{
     }
     /**
      * Конструктор.
-     *  //@param id идентификатор заявки.
+     * @param created дата создания заявки.
      * @param name имя заявки.
      * @param desc дата создания заявки.
      */
-    public Item( String name, String desc) {
-        this.id = getId();
+    public Item( String name, String desc, long created) {
         this.name = name;
         this.desc = desc;
-        this.created = System.currentTimeMillis();
+        this.created = created;
     }
     /**
      * Метод сеттер, устанавливает значение id.
      *@return Уникальный ключ.
      */
-    public String setId(String genId) {
-        this.id = genId;
-        return genId;
+    public void setId(String id) {
+        this.id = id;
     }
     /**
      * Метод геттер, возвращает значение name.
@@ -40,6 +38,13 @@ public class Item extends Tracker{
      */
     public String getName(){
         return this.name;
+    }
+    /**
+     * Метод геттер, возвращает значение desc.
+     * @return Описание заявки.
+     */
+    public String getDesc(){
+        return this.desc;
     }
     /**
      * Метод геттер, возвращает значение id.

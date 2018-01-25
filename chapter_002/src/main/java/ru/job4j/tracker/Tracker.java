@@ -1,9 +1,12 @@
 package ru.job4j.tracker;
+
+import java.util.*;
+
 /**
- * Package for calculate task.
+ *Класс Tracker - хранилище для хранения заявок и выполнения операций над ними.
  *
  * @author Ivan Mozheiko (mozhivan@yandex.ru)
- * @version $Id$
+ * @version 1.2
  * @since 0.1
  */
 public class Tracker {
@@ -11,7 +14,7 @@ public class Tracker {
      * Массив для хранение заявок.
      */
     private final Item[] items = new Item[100];
-
+    private static final Random RN = new Random();
     /**
      * Указатель ячейки для новой заявки.
      */
@@ -22,7 +25,7 @@ public class Tracker {
      * @param item новая заявка
      */
     public Item add(Item item) {
-        item.setId(this.generateId(item));
+        item.setId(generateId());
         this.items[this.position++] = item;
         return item;
     }
@@ -32,8 +35,8 @@ public class Tracker {
      */
     public void replace(String id, Item item){
         for (int i = 0; i < this.items.length; i++){
-            if (this.items[i].getId().equals(id)){
-        this.items[i] = item;
+            if (this.items[i]!=null&&this.items[i].getId().equals(id)){
+                this.items[i] = item;
             }
         }
 
@@ -43,9 +46,9 @@ public class Tracker {
      * @param id ключ удаляемой заявки.
      */
     public void delete(String id){
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i].getId().equals(id)){
-                System.arraycopy(this.items,i + 1,this.items,i,this.items.length - i);
+        for (int i = 0; i < this.position; i++) {
+            if (this.items[i]!=null&&this.items[i].getId().equals(id)){
+                System.arraycopy(this.items,i + 1,this.items,i,position - i);
                 break;
             }
         }
@@ -55,9 +58,11 @@ public class Tracker {
      * @return массив this.items без null элементов;.
      */
     public Item[] findAll(){
-        Item[] item = new Item[this.position];
-        System.arraycopy(this.items,0,item,0,item.length);
-        return item;
+        Item[] result = new Item[this.position];
+        for (int i = 0; i != this.position; i++){
+            result[i] = this.items[i];
+        }
+        return result;
     }
     /**
      * Метод реализаущий поиск заявок по имени.
@@ -65,16 +70,15 @@ public class Tracker {
      * @return массив найденных заявок с данным именем.
      */
     public Item[] findByName(String key){
-        int f = 0;
-        Item[] item = new Item[this.position];
+        int find = 0;
+        Item[] result = new Item[this.position];
         for (int i = 0; i < this.items.length; i++){
-            if (this.items[i].getName().equals(key)) {
-                item[f] = this.items[i];
-                f++;
+            if (this.items[i]!=null&&this.items[i].getName().equals(key)) {
+                result[find] = this.items[i];
+                find++;
             }
         }
-        System.arraycopy(item,0,item,0,f + 1);
-        return item;
+        return Arrays.copyOf(result,find);
     }
     /**
      * Метод реализаущий поиск заявок по id.
@@ -82,26 +86,23 @@ public class Tracker {
      * @return заявка item с данным id.
      */
     public Item findById(String id){
-        Item item = new Item();
-        for (int i = 0; i < this.items.length; i++){
-            if (this.items[i].getId().equals(id)){
-                item = items[i];
-            }
-            else{
-                item = null;
+        Item result = null;
+        for (Item item : this.items){
+            if (item!=null&&item.getId().equals(id)){
+                result = item;
+                break;
             }
         }
-        return item;
+        return result;
     }
     /**
      * Метод генерирует уникальный ключ для заявки.
      * Ключ будет строкой, состоять из даты создания и случайного числа от 100 до 999.
      * @return Уникальный ключ.
      */
-    private String generateId(Item item) {
-        Integer a = 100 + (int)(Math.random()*899);
-        Long c = item.getCreated();
-        return c.toString() + a.toString();
+    String generateId() {
+
+        return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
 
 
