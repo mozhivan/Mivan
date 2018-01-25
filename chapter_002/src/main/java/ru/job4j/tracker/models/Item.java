@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.models;
 
 /**
  *Класс-оболочка для полей Item.
@@ -26,6 +26,16 @@ public class Item {
         this.created = created;
     }
     /**
+     * Конструктор.
+     *
+     * @param name имя заявки.
+     * @param desc дата создания заявки.
+     */
+    public Item( String name, String desc) {
+        this.name = name;
+        this.desc = desc;
+    }
+    /**
      * Метод сеттер, устанавливает значение id.
      *@return Уникальный ключ.
      */
@@ -45,6 +55,12 @@ public class Item {
      */
     public String getDesc(){
         return this.desc;
+    }
+    /**
+     * Метод сеттер, устанавливает значение desc.
+     */
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
     /**
      * Метод геттер, возвращает значение id.
