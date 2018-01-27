@@ -99,12 +99,15 @@ public class StartUI {
      * Метод реализует отображения всех заявок.
      */
     private void findAllItems() {
-        System.out.println("------------ Показать все заявки --------------");
+        System.out.print("------------ Показать все заявки --------------" +
+                "");
         Item[] result = this.tracker.findAll();
         for (Item i : result){
-            System.out.println("Id заявки : " + i.getId() + "  Имя заявки : " + i.getName() + "  Описание заявки : " + i.getDesc());
+            System.out.print("Id заявки : " + i.getId() + "  Имя заявки : " + i.getName() + "  Описание заявки : " + i.getDesc() + "" +
+                    "");
         }
-        System.out.println("------------ Конец списка -----------");
+        System.out.print("------------ Конец списка -----------" +
+                "");
     }
     /**
      * Метод реализует изменение описания заявки и сохраниние ее в хранилище по id вместо другой заявки.
@@ -141,26 +144,38 @@ public class StartUI {
      * Метод реализует отображения всех заявок.
      */
     private void findByNAME() {
-        System.out.println("------------ Поиск заявки по имени --------------");
-        String name = this.input.ask("Введите имя заявки :");
+        System.out.print("------------ Поиск заявки по имени --------------" +
+                "");
+        String name = this.input.ask("Введите имя заявки :" +
+                "");
         Item[] result = this.tracker.findByName(name);
         for (Item i : result){
-            System.out.println("Id заявки : " + i.getId() + "  Имя заявки : " + i.getName() + "  Описание заявки : " + i.getDesc());
+            System.out.print("Id заявки : " + i.getId() + "  Имя заявки : " + i.getName() + "  Описание заявки : " + i.getDesc() + "" +
+                    "");
         }
-        System.out.println("------------ Конец списка -----------");
+        System.out.print("------------ Конец списка -----------" +
+                "");
     }
     /**
      * Метод отображающий меню пользователя.
      */
     private void showMenu() {
-        System.out.println("----------- Меню -----------");
-        System.out.println("0. Добавление новой заявки");
-        System.out.println("1. Показать все заявки");
-        System.out.println("2. Изменить заявку");
-        System.out.println("3. Удалить заявку");
-        System.out.println("4. Найти заявку по id");
-        System.out.println("5. Найти заявку по имени");
-        System.out.println("6. Выйти из программы");
+        System.out.print("----------- Меню -----------" +
+                "");
+        System.out.print("0. Добавление новой заявки" +
+                "");
+        System.out.print("1. Показать все заявки" +
+                "");
+        System.out.print("2. Изменить заявку" +
+                "");
+        System.out.print("3. Удалить заявку" +
+                "");
+        System.out.print("4. Найти заявку по id" +
+                "");
+        System.out.print("5. Найти заявку по имени" +
+                "");
+        System.out.print("6. Выйти из программы" +
+                "");
     }
     public static void main(String[] args){
         ConsoleInput input = new ConsoleInput();
