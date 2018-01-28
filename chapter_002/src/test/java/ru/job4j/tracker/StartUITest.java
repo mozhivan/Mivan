@@ -52,7 +52,7 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findAll()[0].getName(), is("test name"));
     }
@@ -64,7 +64,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(new Item("test name1","desc1"));
         Item item2 = tracker.add(new Item("test name2","desc2"));
-        Input input = new StubInput(new String[]{"2", item1.getId(), "new test desc", item2.getId(), "6"});
+        Input input = new StubInput(new String[]{"2", item1.getId(), "new test desc", item2.getId(), "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(item1.getId()).getDesc(), is("new test desc"));
     }
@@ -77,7 +77,7 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("test name1","desc1"));
         String id = item1.getId();
         Item rsl = null;
-        Input input = new StubInput(new String[]{"3", item1.getId(), "6"});
+        Input input = new StubInput(new String[]{"3", item1.getId(), "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(id), is(rsl));
     }
@@ -89,7 +89,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(new Item("test name1","desc1"));
         String id = item1.getId();
-        Input input = new StubInput(new String[]{"4", id, "6"});
+        Input input = new StubInput(new String[]{"4", id, "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(id).getName(), is("test name1"));
     }
@@ -106,33 +106,24 @@ public class StartUITest {
         item1.setId("testId1");
         item3.setId("testId3");
         item4.setId("testId4");
-        Input input = new StubInput(new String[]{"5", "name1", "6"});
+        Input input = new StubInput(new String[]{"5", "name1", "y"});
         new StartUI(input, tracker).init();
         assertThat(
                 new String(this.out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("----------- Меню -----------")
-                                .append("0. Добавление новой заявки")
-                                .append("1. Показать все заявки")
-                                .append("2. Изменить заявку")
-                                .append("3. Удалить заявку")
-                                .append("4. Найти заявку по id")
-                                .append("5. Найти заявку по имени")
-                                .append("6. Выйти из программы")
-                                .append("------------ Поиск заявки по имени --------------")
-                                .append("Id заявки : testId1  Имя заявки : name1  Описание заявки : desc1")
-                                .append("Id заявки : testId3  Имя заявки : name1  Описание заявки : desc3")
-                                .append("Id заявки : testId4  Имя заявки : name1  Описание заявки : desc4")
-                                .append("------------ Конец списка -----------")
-                                .append("----------- Меню -----------")
-                                .append("0. Добавление новой заявки")
-                                .append("1. Показать все заявки")
-                                .append("2. Изменить заявку")
-                                .append("3. Удалить заявку")
-                                .append("4. Найти заявку по id")
-                                .append("5. Найти заявку по имени")
-                                .append("6. Выйти из программы")
+                                .append("----------- Меню -----------\\r\\n")
+                                .append("0. Добавление новой заявки\\r\\n")
+                                .append("1. Показать все заявки\\r\\n")
+                                .append("2. Изменить заявку\\r\\n")
+                                .append("3. Удалить заявку\\r\\n")
+                                .append("4. Найти заявку по id\\r\\n")
+                                .append("5. Найти заявку по имени\\r\\n")
+                                .append("------------ Поиск заявки по имени --------------\\r\\n")
+                                .append("Id заявки : testId1  Имя заявки : name1  Описание заявки : desc1\\r\\n")
+                                .append("Id заявки : testId3  Имя заявки : name1  Описание заявки : desc3\\r\\n")
+                                .append("Id заявки : testId4  Имя заявки : name1  Описание заявки : desc4\\r\\n")
+                                .append("------------ Конец списка -----------\\r\\n")
                                 .toString()
                 )
         );
@@ -151,34 +142,26 @@ public class StartUITest {
         item2.setId("testId2");
         item3.setId("testId3");
         item4.setId("testId4");
-        Input input = new StubInput(new String[]{"1", "6"});
+        Input input = new StubInput(new String[]{"1", "y"});
         new StartUI(input, tracker).init();
         assertThat(
                 new String(this.out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("----------- Меню -----------")
-                                .append("0. Добавление новой заявки")
-                                .append("1. Показать все заявки")
-                                .append("2. Изменить заявку")
-                                .append("3. Удалить заявку")
-                                .append("4. Найти заявку по id")
-                                .append("5. Найти заявку по имени")
-                                .append("6. Выйти из программы")
-                                .append("------------ Показать все заявки --------------")
-                                .append("Id заявки : testId1  Имя заявки : test name1  Описание заявки : desc1")
-                                .append("Id заявки : testId2  Имя заявки : test name2  Описание заявки : desc2")
-                                .append("Id заявки : testId3  Имя заявки : test name3  Описание заявки : desc3")
-                                .append("Id заявки : testId4  Имя заявки : test name4  Описание заявки : desc4")
-                                .append("------------ Конец списка -----------")
-                                .append("----------- Меню -----------")
-                                .append("0. Добавление новой заявки")
-                                .append("1. Показать все заявки")
-                                .append("2. Изменить заявку")
-                                .append("3. Удалить заявку")
-                                .append("4. Найти заявку по id")
-                                .append("5. Найти заявку по имени")
-                                .append("6. Выйти из программы")
+                                .append("----------- Меню -----------\\r\\n")
+                                .append("0. Добавление новой заявки\\r\\n")
+                                .append("1. Показать все заявки\\r\\n")
+                                .append("2. Изменить заявку\\r\\n")
+                                .append("3. Удалить заявку\\r\\n")
+                                .append("4. Найти заявку по id\\r\\n")
+                                .append("5. Найти заявку по имени\\r\\n")
+                                .append("------------ Показать все заявки --------------\\r\\n")
+                                .append("Id заявки : testId1  Имя заявки : test name1  Описание заявки : desc1\\r\\n")
+                                .append("Id заявки : testId2  Имя заявки : test name2  Описание заявки : desc2\\r\\n")
+                                .append("Id заявки : testId3  Имя заявки : test name3  Описание заявки : desc3\\r\\n")
+                                .append("Id заявки : testId4  Имя заявки : test name4  Описание заявки : desc4\\r\\n")
+                                .append("------------ Конец списка -----------\\r\\n")
+                                .append("")
                                 .toString()
                 )
         );
