@@ -10,6 +10,10 @@ public class StartUI {
      */
     private final Input input;
     /**
+     * Массив допустимых значений меню.
+     */
+    private int[] range;
+    /**
      * Хранилище заявок.
      */
     private final Tracker tracker;
@@ -21,6 +25,7 @@ public class StartUI {
     public StartUI(Input input, Tracker tracker){
         this.input = input;
         this.tracker = tracker;
+        this.range = new int[]{0,1,2,3,4,5};
     }
     /**
      * Основой цикл программы.
@@ -32,7 +37,7 @@ public class StartUI {
         String yes = "y";
         do {
             menu.show();
-            int key = Integer.valueOf(input.ask("Выберете пункт меню : "));
+            int key = Integer.valueOf(input.ask("Выберете пункт меню : ",this.range));
             menu.select(key);
             if (yes.equals(this.input.ask("Вы хотите выйти? y/n"))){
                 exit = true;
@@ -41,7 +46,7 @@ public class StartUI {
     }
 
     public static void main(String[] args){
-        ConsoleInput input = new ConsoleInput();
+        Input input = new ValidateInput();
         Tracker tracker = new Tracker();
         new StartUI(input,tracker).init();
     }

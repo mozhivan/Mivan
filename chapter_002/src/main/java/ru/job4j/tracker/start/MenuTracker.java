@@ -23,9 +23,9 @@ public class MenuTracker {
         this.actions[key].execute(this.input, this.tracker);
     }
     public void show(){
-        System.out.print("----------- Меню -----------\\r\\n");
+        System.out.println("----------- Меню ----------- ");
         for (UserAction action:this.actions) {
-            System.out.print(action.info() + "\\r\\n");
+            System.out.println(action.info() + " ");
         }
     }
 
@@ -64,11 +64,11 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.print("------------ Показать все заявки --------------\\r\\n");
+            System.out.print("------------ Показать все заявки -------------- ");
             for (Item item : tracker.findAll()) {
-                System.out.print("Id заявки : " + item.getId() + "  Имя заявки : " + item.getName() + "  Описание заявки : " + item.getDesc() + "\\r\\n");
+                System.out.print("Id заявки : " + item.getId() + "  Имя заявки : " + item.getName() + "  Описание заявки : " + item.getDesc() + " ");
             }
-            System.out.print("------------ Конец списка -----------\\r\\n");
+            System.out.print("------------ Конец списка ----------- ");
         }
 
         @Override
@@ -157,13 +157,13 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.print("------------ Поиск заявки по имени --------------\\r\\n");
+            System.out.println("------------ Поиск заявки по имени -------------- ");
             String name = input.ask("Введите имя заявки :");
             Item[] result = tracker.findByName(name);
             for (Item i : result){
-                System.out.print("Id заявки : " + i.getId() + "  Имя заявки : " + i.getName() + "  Описание заявки : " + i.getDesc() + "\\r\\n");
+                System.out.print("Id заявки : " + i.getId() + "  Имя заявки : " + i.getName() + "  Описание заявки : " + i.getDesc() + " ");
             }
-            System.out.print("------------ Конец списка -----------\\r\\n");
+            System.out.println("------------ Конец списка ----------- ");
         }
 
         @Override
