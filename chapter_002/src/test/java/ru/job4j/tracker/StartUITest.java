@@ -148,8 +148,7 @@ public class StartUITest {
                 new String(this.out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("----------- Меню ----------- " +
-                                        "")
+                                .append("----------- Меню ----------- ")
                                 .append("0. Добавление новой заявки ")
                                 .append("1. Показать все заявки ")
                                 .append("2. Изменить заявку ")
